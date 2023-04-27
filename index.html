@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Appointment Setter / LER</title>
+  <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="time-container">
+            <span id="fechaActual" class="time"></span>
+        </div>
+        <div class="counter-container">
+            <div class="counter">
+                <h2>Follow up</h2>
+                <span id="followUpsCount" class="number-counter">0</span>
+                <div>
+                    <button id="followUpsDecreaseBtn" class="fa fa-minus icon-btn minus-btn"></button>
+                    <button id="followUpsBtn" class="fa fa-plus icon-btn plus-btn"></button>
+                </div>
+            </div>
+            <div class="counter">
+                <h2>Inbound</h2>
+                <span id="newChatInboundCount" class="number-counter">0</span>
+                <div>
+                    <button id="newChatInboundDecreaseBtn" class="fa fa-minus icon-btn minus-btn"></button>
+                    <button id="newChatInboundBtn" class="fa fa-plus icon-btn plus-btn"></button>
+                </div>
+            </div>
+            <div class="counter">
+                <h2>Outbound</h2>
+                <span id="newChatOutboundCount" class="number-counter">0</span>
+                <div>
+                    <button id="newChatOutboundDecreaseBtn" class="fa fa-minus icon-btn minus-btn"></button>
+                    <button id="newChatOutboundBtn" class="fa fa-plus icon-btn plus-btn"></button>
+                </div>
+            </div>
+        </div>
+        <div class="input-container">
+            <div class="input-data">
+                <h2>Calls Proposed</h2>
+                <div class="item-container">
+                    <ol id="callsProposedList" class="input-item"></ol>
+                </div>
+                <input type="text" id="callsProposedInput">
+                <button id="callsProposedBtn" class="fa fa-plus add-btn"></button>
+            </div>
+            <div class="input-data">
+                <h2>New Booking</h2>
+                <div class="item-container">
+                    <ol id="newBookingList" class="input-item"></ol>
+                </div>
+                <input type="text" id="newBookingInput">
+                <button id="newBookingBtn" class="fa fa-plus add-btn"></button>
+            </div>
+            <div class="input-data">
+                <h2>Show Ups</h2>
+                <div class="item-container">
+                    <ol id="showUpsList" class="input-item"></ol>
+                </div>
+                <input type="text" id="showUpsInput">
+                <button id="showUpsBtn" class="fa fa-plus add-btn"></button>
+            </div>
+            <div class="input-data">
+                <h2>Sales Efectivas</h2>
+                <div class="item-container">
+                    <ol id="salesEfectivasList" class="input-item"></ol>
+                </div>
+                <input type="text" id="salesEfectivasInput">
+                <button id="salesEfectivasBtn" class="fa fa-plus add-btn"></button>
+            </div>
+            <div class="input-data">
+                <h2>Notes</h2>
+                <textarea id="notasTextarea"></textarea>
+            </div>
+        </div> 
+        <button id="descargarBtn">DESCARGAR</button>
+    </div>
+    <script src="index.js"></script>
+</body>
+</html>

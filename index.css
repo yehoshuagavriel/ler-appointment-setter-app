@@ -1,0 +1,194 @@
+@import url('https://fonts.googleapis.com/css2?family=Explora&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Yatra+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bad+Script&display=swap'); /* font-family: 'Bad Script', sans-serif; */
+@import url('https://fonts.googleapis.com/css?family=Poppins&display=swap'); /* font-family: 'Poppins', sans-serif; */
+@import url('https://fonts.googleapis.com/css2?family=Jura:wght@300&display=swap'); /* font-family: 'Jura', sans-serif;  */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Raleway'); /* font-family: 'Raleway', sans-serif; */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap'); /* font-family: 'Inter', sans-serif; */
+
+:root {
+    --white: #ffffff;
+    --black: #000000;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  font-family: 'Alumni Sans Pinstripe';
+  list-style-type: none;
+  user-select: none;
+  font-family: 'Poppins', sans-serif;
+}
+
+*::-webkit-scrollbar {
+  display: none;
+}
+
+body {
+    color: var(--white);
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(
+        to bottom, 
+        rgba(29, 29, 29, .89),
+        rgba(0, 0, 0, .89),
+        rgba(0, 0, 0, .89),
+        rgba(0, 0, 0, .89),
+        rgba(0, 0, 0, .89)
+      ), url('./assets/images/bg.jpg');
+    background-size: cover;
+    background-position: center;
+}
+  
+
+input {
+    outline: none;
+    border: none;
+    font-size: 1.25em;
+    width: 50vw;
+    height: 2.5em;
+    padding: 0 .7em;
+    margin: 1em 0;
+    border-radius: 2em;
+}
+
+textarea {
+    outline: none;
+    border: none;
+    resize: none;
+    font-size: 1em;
+    width: 50%;
+    height: 5em;
+    margin: 1em 0;
+    padding: .5em .7em;
+}
+
+.container {
+    width: 100%;
+}
+
+.logo {
+    width: 100%;
+}
+
+.time-container {
+    display: flex;
+    justify-content: center;
+    padding: .5em 0;
+    width: 100%;
+    border: .1em white solid;
+}
+
+.time {
+    font-size: 2em;
+    letter-spacing: .1em;
+}
+
+.counter-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: 100%;
+}
+
+.counter {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: .1em white solid;
+    padding: 1em;
+}
+
+.counter h2 {
+    font-size: 1.5em;
+}
+
+.number-counter{
+    font-size: 2.5em;
+    padding: .5em 0;
+}
+
+.icon-btn {
+    font-size: 2em;
+    padding: .1em .25em;
+    margin: 0 .25em;
+    outline: none;
+    border: none;
+    border-radius: 2em;
+}
+
+.plus-btn {
+    background-color: #5cd35c;
+    transition: .3s;
+    cursor: pointer;
+}
+
+.minus-btn {
+    background-color: #ee4646;
+    transition: .3s;
+    cursor: pointer;
+}
+
+
+.add-btn {
+    border: none;
+    font-size: 2em;
+    padding: .1em .25em;
+    margin: 0 .25em;
+    border-radius: 2em;
+    background-color: #5cd35c;
+    transition: .3s;
+    cursor: pointer;
+}
+
+#descargarBtn {
+    outline: none;
+    border: none;
+    font-family: 'Raleway', sans-serif;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin: 1em 0;
+    padding: .5em 0;
+    font-size: 2em;
+    background-color: #ffab0f;
+    border-radius: 2em;
+    opacity: .8;
+    cursor: pointer;
+    transition: .5s;
+}
+
+#descargarBtn:hover {
+    opacity: 1;
+}
+
+
+
+/***************************************************************************************************/
+
+.input-data {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 1em 3em;
+    width: 100%;
+    border: 1px white solid;
+}
+
+.item-container {
+    padding-top: 1em;
+}
+
+.input-item {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    font-size: 1.5em;
+}
