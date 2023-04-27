@@ -24,8 +24,20 @@
   font-family: 'Poppins', sans-serif;
 }
 
-*::-webkit-scrollbar {
-  display: none;
+
+body::-webkit-scrollbar {
+    width: 1em;
+    height: 100%;
+    background-color: rgb(61, 53, 53);
+}
+  
+body::-webkit-scrollbar-thumb {
+    background-color: orange;
+    border-radius: 1em;
+}
+  
+body::-webkit-scrollbar-thumb:horizontal {
+    display: none;
 }
 
 body {
@@ -147,15 +159,18 @@ textarea {
     cursor: pointer;
 }
 
+.download-container {
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+}
+
 #descargarBtn {
     outline: none;
     border: none;
     font-family: 'Raleway', sans-serif;
-    display: flex;
-    justify-content: center;
-    width: 100%;
     margin: 1em 0;
-    padding: .5em 0;
+    padding: .5em 2em;
     font-size: 2em;
     background-color: #ffab0f;
     border-radius: 2em;
@@ -167,8 +182,6 @@ textarea {
 #descargarBtn:hover {
     opacity: 1;
 }
-
-
 
 /***************************************************************************************************/
 

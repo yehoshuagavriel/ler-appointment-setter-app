@@ -1,3 +1,19 @@
+// Función que se ejecuta antes de que el usuario actualice o cierre la página
+function beforeUnloadHandler(event) {
+    // Mensaje de alerta que se muestra al usuario
+    const confirmationMessage = 'Los datos podrían perderse. ¿Seguro que quieres continuar?';
+  
+    // Establece el mensaje de confirmación en algunos navegadores
+    event.returnValue = confirmationMessage;
+  
+    // Muestra una alerta al usuario
+    alert(confirmationMessage);
+  }
+  
+  // Registra el evento 'beforeunload' en la ventana del navegador
+  window.addEventListener('beforeunload', beforeUnloadHandler);
+  
+
 let followUpsCount = 0;
 let newChatInboundCount = 0;
 let newChatOutboundCount = 0;
