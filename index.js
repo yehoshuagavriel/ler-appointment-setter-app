@@ -1,17 +1,37 @@
-// Función que se ejecuta antes de que el usuario actualice o cierre la página
-function beforeUnloadHandler(event) {
-    // Mensaje de alerta que se muestra al usuario
-    const confirmationMessage = 'Los datos podrían perderse. ¿Seguro que quieres continuar?';
+function init() {
+    // Verificar si los valores ya existen en el localStorage
+    if (localStorage.getItem('followUpsCount')) {
+      // Si existen, obtener los valores del localStorage
+      followUpsCount = parseInt(localStorage.getItem('followUpsCount'));
+      newChatInboundCount = parseInt(localStorage.getItem('newChatInboundCount'));
+      newChatOutboundCount = parseInt(localStorage.getItem('newChatOutboundCount'));
+    } else {
+      // Si no existen, establecer los valores iniciales
+      followUpsCount = 0;
+      newChatInboundCount = 0;
+      newChatOutboundCount = 0;
+    }
   
-    // Establece el mensaje de confirmación en algunos navegadores
-    event.returnValue = confirmationMessage;
+    // Actualizar los contadores en la página
+    document.getElementById("followUpsCount").textContent = followUpsCount;
+    document.getElementById("newChatInboundCount").textContent = newChatInboundCount;
+    document.getElementById("newChatOutboundCount").textContent = newChatOutboundCount;
   
-    // Muestra una alerta al usuario
-    alert(confirmationMessage);
+    // Restaurar los datos de las listas desde el localStorage
+    restoreListData("callsProposedList");
+    restoreListData("newBookingList");
+    restoreListData("showUpsList");
+    restoreListData("salesEfectivasList");
   }
   
-  // Registra el evento 'beforeunload' en la ventana del navegador
-  window.addEventListener('beforeunload', beforeUnloadHandler);
+  // Llamar a la función init cuando se carga la página
+  window.addEventListener('DOMContentLoaded', init);
+  
+function saveDataToLocalStorage() {
+    localStorage.setItem('followUpsCount', followUpsCount);
+    localStorage.setItem('newChatInboundCount', newChatInboundCount);
+    localStorage.setItem('newChatOutboundCount', newChatOutboundCount);
+}
   
 
 let followUpsCount = 0;
@@ -27,31 +47,37 @@ const fechaFormateada = `${dia}-${mes}-${año}`;
 function incrementFollowUps() {
   followUpsCount++;
   document.getElementById("followUpsCount").textContent = followUpsCount;
+  saveDataToLocalStorage();
 }
 function incrementNewChatInbound() {
   newChatInboundCount++;
   document.getElementById("newChatInboundCount").textContent = newChatInboundCount;
+  saveDataToLocalStorage();
 }
 function incrementNewChatOutbound() {
   newChatOutboundCount++;
   document.getElementById("newChatOutboundCount").textContent = newChatOutboundCount;
+  saveDataToLocalStorage();
 }
 function decreaseFollowUps() {
     if (followUpsCount > 0) {
         followUpsCount--;
         document.getElementById("followUpsCount").textContent = followUpsCount;
+        saveDataToLocalStorage();
     }
 }
 function decreaseNewChatInbound() {
     if (newChatInboundCount > 0) {
         newChatInboundCount--;
         document.getElementById("newChatInboundCount").textContent = newChatInboundCount;
+        saveDataToLocalStorage();
     }
 }
 function decreaseNewChatOutbound() {
     if (newChatOutboundCount > 0) {
         newChatOutboundCount--;
         document.getElementById("newChatOutboundCount").textContent = newChatOutboundCount;
+        saveDataToLocalStorage();
     }
 }
 
@@ -71,23 +97,28 @@ function addNameToList(inputId, listId) {
         const listItem = document.createElement("li");
         listItem.textContent = name;
         const deleteButton = document.createElement("button");
-             deleteButton.style.margin = ".5em 1em";
-            deleteButton.style.padding = ".5em 1em";
-            deleteButton.style.borderRadius = "2em";
-            deleteButton.style.fontSize = "16px";
-            deleteButton.style.backgroundColor = "#ee4646";
-            deleteButton.style.color = "black";
-            deleteButton.style.border = "none";
-            deleteButton.style.cursor = "pointer";
-            deleteButton.innerHTML = '<i class="fas fa-times"></i>';
-            deleteButton.addEventListener("click", () => {
+        deleteButton.style.margin = ".5em 1em";
+        deleteButton.style.padding = ".5em 1em";
+        deleteButton.style.borderRadius = "2em";
+        deleteButton.style.fontSize = "16px";
+        deleteButton.style.backgroundColor = "#ee4646";
+        deleteButton.style.color = "black";
+        deleteButton.style.border = "none";
+        deleteButton.style.cursor = "pointer";
+        deleteButton.innerHTML = '<i class="fas fa-times"></i>';
+        deleteButton.addEventListener("click", () => {
             list.removeChild(listItem);
+            saveListData(listId);
         });
         listItem.appendChild(deleteButton);
         list.appendChild(listItem);
         input.value = "";
+
+        // Guardar los datos actualizados en el localStorage
+        saveListData(listId);
     }
 }
+
 
 document.getElementById("callsProposedBtn").addEventListener("click", () => {
     addNameToList("callsProposedInput", "callsProposedList");
@@ -136,3 +167,74 @@ document.getElementById("descargarBtn").addEventListener("click", () => {
     a.download = `${fechaFormateada}.txt`;
     a.click();
 });
+
+function saveListData(listId) {
+    const list = document.getElementById(listId);
+    const listData = Array.from(list.children).map((listItem) => listItem.textContent);
+    localStorage.setItem(listId, JSON.stringify(listData));
+}
+
+function restoreListData(listId) {
+    const listData = localStorage.getItem(listId);
+    if (listData) {
+      const list = document.getElementById(listId);
+      const parsedListData = JSON.parse(listData);
+      for (let i = 0; i < parsedListData.length; i++) {
+        const listItem = document.createElement("li");
+        listItem.textContent = parsedListData[i];
+        const deleteButton = document.createElement("button");
+        deleteButton.style.margin = ".5em 1em";
+        deleteButton.style.padding = ".5em 1em";
+        deleteButton.style.borderRadius = "2em";
+        deleteButton.style.fontSize = "16px";
+        deleteButton.style.backgroundColor = "#ee4646";
+        deleteButton.style.color = "black";
+        deleteButton.style.border = "none";
+        deleteButton.style.cursor = "pointer";
+        deleteButton.innerHTML = '<i class="fas fa-times"></i>';
+  
+        // Agregar evento de eliminación al botón
+        deleteButton.addEventListener("click", () => {
+          list.removeChild(listItem);
+          saveListData(listId);
+        });
+  
+        listItem.appendChild(deleteButton);
+        list.appendChild(listItem);
+      }
+    }
+  }
+  
+
+function resetData() {
+    // Restablecer los valores de los contadores
+    followUpsCount = 0;
+    newChatInboundCount = 0;
+    newChatOutboundCount = 0;
+  
+    // Actualizar los contadores en la página
+    document.getElementById("followUpsCount").textContent = followUpsCount;
+    document.getElementById("newChatInboundCount").textContent = newChatInboundCount;
+    document.getElementById("newChatOutboundCount").textContent = newChatOutboundCount;
+  
+    // Borrar los datos de las listas en el localStorage
+    localStorage.removeItem("callsProposedList");
+    localStorage.removeItem("newBookingList");
+    localStorage.removeItem("showUpsList");
+    localStorage.removeItem("salesEfectivasList");
+  
+    // Limpiar las listas en el DOM
+    document.getElementById("callsProposedList").innerHTML = "";
+    document.getElementById("newBookingList").innerHTML = "";
+    document.getElementById("showUpsList").innerHTML = "";
+    document.getElementById("salesEfectivasList").innerHTML = "";
+  }
+
+  
+
+  
+  
+
+document.getElementById("resetBtn").addEventListener("click", resetData);
+
+  
