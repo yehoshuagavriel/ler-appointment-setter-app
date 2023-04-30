@@ -22,6 +22,7 @@ function init() {
     restoreListData("newBookingList");
     restoreListData("showUpsList");
     restoreListData("salesEfectivasList");
+    restoreListData("notesList");
   }
   
   // Llamar a la función init cuando se carga la página
@@ -132,6 +133,9 @@ document.getElementById("showUpsBtn").addEventListener("click", () => {
 document.getElementById("salesEfectivasBtn").addEventListener("click", () => {
     addNameToList("salesEfectivasInput", "salesEfectivasList");
 });
+document.getElementById("notesBtn").addEventListener("click", () => {
+  addNameToList("notesInput", "notesList");
+});
 
 
 function getDataAsText() {
@@ -143,7 +147,7 @@ function getDataAsText() {
     text += "New Booking:\n" + getNumberedNamesTextFromList("newBookingList") + "\n";
     text += "Show Ups:\n" + getNumberedNamesTextFromList("showUpsList") + "\n";
     text += "Sales Efectivas:\n" + getNumberedNamesTextFromList("salesEfectivasList") + "\n";
-    text += "Notas:\n" + document.getElementById("notasTextarea").value.trim() + "\n";
+    text += "Notas:\n" + getNumberedNamesTextFromList("notesList") + "\n";
     return text;
 }
   
@@ -222,18 +226,15 @@ function resetData() {
     localStorage.removeItem("newBookingList");
     localStorage.removeItem("showUpsList");
     localStorage.removeItem("salesEfectivasList");
+    localStorage.removeItem("notesList");
   
     // Limpiar las listas en el DOM
     document.getElementById("callsProposedList").innerHTML = "";
     document.getElementById("newBookingList").innerHTML = "";
     document.getElementById("showUpsList").innerHTML = "";
     document.getElementById("salesEfectivasList").innerHTML = "";
-  }
-
-  
-
-  
-  
+    document.getElementById("notesList").innerHTML = "";
+} 
 
 document.getElementById("resetBtn").addEventListener("click", resetData);
 
