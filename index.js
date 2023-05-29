@@ -1,78 +1,124 @@
 function init() {
-    // Verificar si los valores ya existen en el localStorage
-    if (localStorage.getItem('followUpsCount')) {
-      // Si existen, obtener los valores del localStorage
-      followUpsCount = parseInt(localStorage.getItem('followUpsCount'));
-      newChatInboundCount = parseInt(localStorage.getItem('newChatInboundCount'));
-      newChatOutboundCount = parseInt(localStorage.getItem('newChatOutboundCount'));
-    } else {
-      // Si no existen, establecer los valores iniciales
-      followUpsCount = 0;
-      newChatInboundCount = 0;
-      newChatOutboundCount = 0;
-    }
-  
-    // Actualizar los contadores en la página
-    document.getElementById("followUpsCount").textContent = followUpsCount;
-    document.getElementById("newChatInboundCount").textContent = newChatInboundCount;
-    document.getElementById("newChatOutboundCount").textContent = newChatOutboundCount;
-  
-    // Restaurar los datos de las listas desde el localStorage
-    restoreListData("callsProposedList");
-    restoreListData("newBookingList");
-    restoreListData("showUpsList");
-    restoreListData("salesEfectivasList");
-    restoreListData("notesList");
+  if (localStorage.getItem('followUpsCount')) {
+    clickupLeadsCount = parseInt(localStorage.getItem('clickupLeadsCount'));
+    openChatsCount = parseInt(localStorage.getItem('openChatsCount'));
+    totalChatsCount = parseInt(localStorage.getItem('totalChatsCount'));
+    followUpsCount = parseInt(localStorage.getItem('followUpsCount'));
+    newChatInboundCount = parseInt(localStorage.getItem('newChatInboundCount'));
+    newChatOutboundCount = parseInt(localStorage.getItem('newChatOutboundCount'));
+  } else {
+    clickupLeadsCount = 0;
+    openChatsCount = 0;
+    totalChatsCount = 0;
+    followUpsCount = 0;
+    newChatInboundCount = 0;
+    newChatOutboundCount = 0;
   }
-  
-  // Llamar a la función init cuando se carga la página
-  window.addEventListener('DOMContentLoaded', init);
-  
-function saveDataToLocalStorage() {
-    localStorage.setItem('followUpsCount', followUpsCount);
-    localStorage.setItem('newChatInboundCount', newChatInboundCount);
-    localStorage.setItem('newChatOutboundCount', newChatOutboundCount);
+
+  document.getElementById("clickupLeadsCount").textContent = clickupLeadsCount;
+  document.getElementById("openChatsCount").textContent = openChatsCount;
+  document.getElementById("totalChatsCount").textContent = totalChatsCount;
+  document.getElementById("followUpsCount").textContent = followUpsCount;
+  document.getElementById("newChatInboundCount").textContent = newChatInboundCount;
+  document.getElementById("newChatOutboundCount").textContent = newChatOutboundCount;
+  restoreListData("callsProposedList");
+  restoreListData("newBookingList");
+  restoreListData("notesList");
 }
   
-
+window.addEventListener('DOMContentLoaded', init);
+  
+function saveDataToLocalStorage() {
+  localStorage.setItem('clickupLeadsCount', clickupLeadsCount);
+  localStorage.setItem('openChatsCount', openChatsCount);
+  localStorage.setItem('totalChatsCount', totalChatsCount);
+  localStorage.setItem('followUpsCount', followUpsCount);
+  localStorage.setItem('newChatInboundCount', newChatInboundCount);
+  localStorage.setItem('newChatOutboundCount', newChatOutboundCount);
+}
+  
+let clickupLeadsCount = 0;
+let openChatsCount = 0;
+let totalChatsCount = 0;
 let followUpsCount = 0;
 let newChatInboundCount = 0;
 let newChatOutboundCount = 0;
-const fechaActual = new Date();
 
+const fechaActual = new Date();
 const dia = String(fechaActual.getDate()).padStart(2, '0');
-const mes = String(fechaActual.getMonth() + 1).padStart(2, '0'); // Los meses se indexan desde 0
+const mes = String(fechaActual.getMonth() + 1).padStart(2, '0');
 const año = fechaActual.getFullYear();
 const fechaFormateada = `${dia}-${mes}-${año}`;
+
+function incrementClickupLeads() {
+  clickupLeadsCount++;
+  document.getElementById("clickupLeadsCount").textContent = clickupLeadsCount;
+  saveDataToLocalStorage();
+}
+function decreaseClickupLeads() {
+  if (clickupLeadsCount > 0) {
+      clickupLeadsCount--;
+      document.getElementById("clickupLeadsCount").textContent = clickupLeadsCount;
+      saveDataToLocalStorage();
+  }
+}
+
+function incrementOpenChats() {
+  openChatsCount++;
+  document.getElementById("openChatsCount").textContent = openChatsCount;
+  saveDataToLocalStorage();
+}
+function decreaseOpenChats() {
+  if (openChatsCount > 0) {
+      openChatsCount--;
+      document.getElementById("openChatsCount").textContent = openChatsCount;
+      saveDataToLocalStorage();
+  }
+}
+
+function incrementTotalChats() {
+  totalChatsCount++;
+  document.getElementById("totalChatsCount").textContent = totalChatsCount;
+  saveDataToLocalStorage();
+}
+function decreaseTotalChats() {
+  if (totalChatsCount > 0) {
+    totalChatsCount--;
+    document.getElementById("totalChatsCount").textContent = totalChatsCount;
+    saveDataToLocalStorage();
+  }
+}
 
 function incrementFollowUps() {
   followUpsCount++;
   document.getElementById("followUpsCount").textContent = followUpsCount;
   saveDataToLocalStorage();
 }
+function decreaseFollowUps() {
+  if (followUpsCount > 0) {
+      followUpsCount--;
+      document.getElementById("followUpsCount").textContent = followUpsCount;
+      saveDataToLocalStorage();
+  }
+}
+
 function incrementNewChatInbound() {
   newChatInboundCount++;
   document.getElementById("newChatInboundCount").textContent = newChatInboundCount;
   saveDataToLocalStorage();
 }
+function decreaseNewChatInbound() {
+  if (newChatInboundCount > 0) {
+      newChatInboundCount--;
+      document.getElementById("newChatInboundCount").textContent = newChatInboundCount;
+      saveDataToLocalStorage();
+  }
+}
+
 function incrementNewChatOutbound() {
   newChatOutboundCount++;
   document.getElementById("newChatOutboundCount").textContent = newChatOutboundCount;
   saveDataToLocalStorage();
-}
-function decreaseFollowUps() {
-    if (followUpsCount > 0) {
-        followUpsCount--;
-        document.getElementById("followUpsCount").textContent = followUpsCount;
-        saveDataToLocalStorage();
-    }
-}
-function decreaseNewChatInbound() {
-    if (newChatInboundCount > 0) {
-        newChatInboundCount--;
-        document.getElementById("newChatInboundCount").textContent = newChatInboundCount;
-        saveDataToLocalStorage();
-    }
 }
 function decreaseNewChatOutbound() {
     if (newChatOutboundCount > 0) {
@@ -83,12 +129,18 @@ function decreaseNewChatOutbound() {
 }
 
 document.getElementById('fechaActual').textContent = fechaFormateada;
+document.getElementById("clickupLeadsBtn").addEventListener("click", incrementClickupLeads);
+document.getElementById("clickupLeadsDecreaseBtn").addEventListener("click", decreaseClickupLeads);
+document.getElementById("openChatsBtn").addEventListener("click", incrementOpenChats);
+document.getElementById("openChatsDecreaseBtn").addEventListener("click", decreaseOpenChats);
+document.getElementById("totalChatsBtn").addEventListener("click", incrementTotalChats);
+document.getElementById("totalChatsDecreaseBtn").addEventListener("click", decreaseTotalChats);
 document.getElementById("followUpsBtn").addEventListener("click", incrementFollowUps);
-document.getElementById("newChatInboundBtn").addEventListener("click", incrementNewChatInbound);
-document.getElementById("newChatOutboundBtn").addEventListener("click", incrementNewChatOutbound);
 document.getElementById("followUpsDecreaseBtn").addEventListener("click", decreaseFollowUps);
+document.getElementById("newChatInboundBtn").addEventListener("click", incrementNewChatInbound);
 document.getElementById("newChatInboundDecreaseBtn").addEventListener("click", decreaseNewChatInbound);
 document.getElementById("newChatOutboundDecreaseBtn").addEventListener("click", decreaseNewChatOutbound);
+document.getElementById("newChatOutboundBtn").addEventListener("click", incrementNewChatOutbound);
 
 function addNameToList(inputId, listId) {
     const input = document.getElementById(inputId);
@@ -114,8 +166,6 @@ function addNameToList(inputId, listId) {
         listItem.appendChild(deleteButton);
         list.appendChild(listItem);
         input.value = "";
-
-        // Guardar los datos actualizados en el localStorage
         saveListData(listId);
     }
 }
@@ -127,12 +177,6 @@ document.getElementById("callsProposedBtn").addEventListener("click", () => {
 document.getElementById("newBookingBtn").addEventListener("click", () => {
     addNameToList("newBookingInput", "newBookingList");
 });
-document.getElementById("showUpsBtn").addEventListener("click", () => {
-    addNameToList("showUpsInput", "showUpsList");
-});
-document.getElementById("salesEfectivasBtn").addEventListener("click", () => {
-    addNameToList("salesEfectivasInput", "salesEfectivasList");
-});
 document.getElementById("notesBtn").addEventListener("click", () => {
   addNameToList("notesInput", "notesList");
 });
@@ -140,13 +184,14 @@ document.getElementById("notesBtn").addEventListener("click", () => {
 
 function getDataAsText() {
     let text = "";
+    text += "Clickup leads: " + clickupLeadsCount + "\n";
+    text += "Open chats: " + openChatsCount + "\n";
+    text += "Total chats: " + totalChatsCount + "\n";
     text += "Follow ups: " + followUpsCount + "\n";
     text += "New Chat Inbound: " + newChatInboundCount + "\n";
     text += "New Chat Outbound: " + newChatOutboundCount + "\n\n";
     text += "Calls Proposed:\n" + getNumberedNamesTextFromList("callsProposedList") + "\n";
     text += "New Booking:\n" + getNumberedNamesTextFromList("newBookingList") + "\n";
-    text += "Show Ups:\n" + getNumberedNamesTextFromList("showUpsList") + "\n";
-    text += "Sales Efectivas:\n" + getNumberedNamesTextFromList("salesEfectivasList") + "\n";
     text += "Notas:\n" + getNumberedNamesTextFromList("notesList") + "\n";
     return text;
 }
@@ -196,8 +241,6 @@ function restoreListData(listId) {
         deleteButton.style.border = "none";
         deleteButton.style.cursor = "pointer";
         deleteButton.innerHTML = '<i class="fas fa-times"></i>';
-  
-        // Agregar evento de eliminación al botón
         deleteButton.addEventListener("click", () => {
           list.removeChild(listItem);
           saveListData(listId);
@@ -211,29 +254,29 @@ function restoreListData(listId) {
   
 
 function resetData() {
-    // Restablecer los valores de los contadores
-    followUpsCount = 0;
-    newChatInboundCount = 0;
-    newChatOutboundCount = 0;
   
-    // Actualizar los contadores en la página
-    document.getElementById("followUpsCount").textContent = followUpsCount;
-    document.getElementById("newChatInboundCount").textContent = newChatInboundCount;
-    document.getElementById("newChatOutboundCount").textContent = newChatOutboundCount;
+  clickupLeadsCount = 0;
+  openChatsCount = 0;
+  totalChatsCount = 0;
+  followUpsCount = 0;
+  newChatInboundCount = 0;
+  newChatOutboundCount = 0;
   
-    // Borrar los datos de las listas en el localStorage
-    localStorage.removeItem("callsProposedList");
-    localStorage.removeItem("newBookingList");
-    localStorage.removeItem("showUpsList");
-    localStorage.removeItem("salesEfectivasList");
-    localStorage.removeItem("notesList");
   
-    // Limpiar las listas en el DOM
-    document.getElementById("callsProposedList").innerHTML = "";
-    document.getElementById("newBookingList").innerHTML = "";
-    document.getElementById("showUpsList").innerHTML = "";
-    document.getElementById("salesEfectivasList").innerHTML = "";
-    document.getElementById("notesList").innerHTML = "";
+  document.getElementById("clickupLeadsCount").textContent = clickupLeadsCount;
+  document.getElementById("openChatsCount").textContent = openChatsCount;
+  document.getElementById("totalChatsCount").textContent = totalChatsCount;
+  document.getElementById("followUpsCount").textContent = followUpsCount;
+  document.getElementById("newChatInboundCount").textContent = newChatInboundCount;
+  document.getElementById("newChatOutboundCount").textContent = newChatOutboundCount;
+  
+  localStorage.removeItem("callsProposedList");
+  localStorage.removeItem("newBookingList");
+  localStorage.removeItem("notesList");
+  
+  document.getElementById("callsProposedList").innerHTML = "";
+  document.getElementById("newBookingList").innerHTML = "";
+  document.getElementById("notesList").innerHTML = "";
 } 
 
 document.getElementById("resetBtn").addEventListener("click", resetData);

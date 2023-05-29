@@ -22,17 +22,18 @@
   list-style-type: none;
   user-select: none;
   font-family: 'Poppins', sans-serif;
+  text-decoration: none;
 }
 
 
 body::-webkit-scrollbar {
     width: 1em;
     height: 100%;
-    background-color: rgb(61, 53, 53);
+    background-color: rgb(32, 27, 27);
 }
   
 body::-webkit-scrollbar-thumb {
-    background-color: orange;
+    background-color: rgb(255, 255, 255);
     border-radius: 1em;
 }
   
@@ -49,11 +50,11 @@ body {
     justify-content: center;
     background: linear-gradient(
         to bottom, 
-        rgba(29, 29, 29, .89),
-        rgba(0, 0, 0, .89),
-        rgba(0, 0, 0, .89),
-        rgba(0, 0, 0, .89),
-        rgba(0, 0, 0, .89)
+        rgba(29, 29, 29, .5),
+        rgba(0, 0, 0, .5),
+        rgba(0, 0, 0, .5),
+        rgba(0, 0, 0, .5),
+        rgba(0, 0, 0, .5)
       ), url('./assets/images/bg.jpg');
     background-size: cover;
     background-position: center;
@@ -118,7 +119,7 @@ textarea {
 }
 
 .counter h2 {
-    font-size: 1.5em;
+    font-size: 1.2em;
 }
 
 .number-counter{
@@ -187,7 +188,7 @@ textarea {
     outline: none;
     border: none;
     font-family: 'Raleway', sans-serif;
-    margin: 1em 0;
+    margin: .5em 0;
     padding: .5em 2em;
     font-size: 1.5em;
     background-color: #ee4646;
@@ -222,4 +223,30 @@ textarea {
     flex-direction: column;
     width: 100%;
     font-size: 1.5em;
+}
+
+.footer {
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1em 0;
+    font-size: 1.5em;
+}
+
+.footer a {
+    margin: .1em 0 0 .25em;
+    color: white;
+    border-bottom: .1em solid #ee4646;
+    transition: .5s;
+}
+
+.footer a:hover {
+    border-bottom: .1em solid #5cd35c;
+}
+
+.heart {
+    font-size: 1.5em;
+    padding: 0 .25em;
+    color: #ee4646;
 }
