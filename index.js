@@ -181,7 +181,6 @@ document.getElementById("notesBtn").addEventListener("click", () => {
   addNameToList("notesInput", "notesList");
 });
 
-
 function getDataAsText() {
     let text = "";
     text += "Hubspot leads: " + clickupLeadsCount + "\n";
@@ -192,7 +191,7 @@ function getDataAsText() {
     text += "New Chat Outbound: " + newChatOutboundCount + "\n\n";
     text += "Calls Proposed:\n" + getNumberedNamesTextFromList("callsProposedList") + "\n";
     text += "New Booking:\n" + getNumberedNamesTextFromList("newBookingList") + "\n";
-    text += "Notas:\n" + getNumberedNamesTextFromList("notesList") + "\n" + "\n" + "\n";
+    text += "Notas:\n" + getNumberedNamesTextFromList("notesList") + "\n" + "\n" + "\n" + "\n";
     text += "Hecho con ❤️ por Josue (https://www.linkedin.com/in/josuedeveloper)";
     return text;
 }
@@ -262,7 +261,6 @@ function resetData() {
   followUpsCount = 0;
   newChatInboundCount = 0;
   newChatOutboundCount = 0;
-  
   
   document.getElementById("clickupLeadsCount").textContent = clickupLeadsCount;
   document.getElementById("openChatsCount").textContent = openChatsCount;
