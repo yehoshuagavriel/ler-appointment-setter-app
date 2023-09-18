@@ -193,7 +193,7 @@ function getDataAsText() {
     text += "Calls Proposed:\n" + getNumberedNamesTextFromList("callsProposedList") + "\n";
     text += "New Booking:\n" + getNumberedNamesTextFromList("newBookingList") + "\n";
     text += "Notas:\n" + getNumberedNamesTextFromList("notesList") + "\n" + "\n" + "\n";
-    text += "Hecho con ❤️ por Josue (https://www.linkedin.com/in/josuedeveloper)"
+    text += "Hecho con ❤️ por Josue (https://www.linkedin.com/in/josuedeveloper)";
     return text;
 }
   
