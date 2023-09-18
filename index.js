@@ -184,7 +184,7 @@ document.getElementById("notesBtn").addEventListener("click", () => {
 
 function getDataAsText() {
     let text = "";
-    text += "Clickup leads: " + clickupLeadsCount + "\n";
+    text += "Hubspot leads: " + clickupLeadsCount + "\n";
     text += "Open chats: " + openChatsCount + "\n";
     text += "Total chats: " + totalChatsCount + "\n";
     text += "Follow ups: " + followUpsCount + "\n";
@@ -192,7 +192,8 @@ function getDataAsText() {
     text += "New Chat Outbound: " + newChatOutboundCount + "\n\n";
     text += "Calls Proposed:\n" + getNumberedNamesTextFromList("callsProposedList") + "\n";
     text += "New Booking:\n" + getNumberedNamesTextFromList("newBookingList") + "\n";
-    text += "Notas:\n" + getNumberedNamesTextFromList("notesList") + "\n";
+    text += "Notas:\n" + getNumberedNamesTextFromList("notesList") + "\n" + "\n" + "\n";
+    text += "Hecho con ❤️ por Josue (https://www.linkedin.com/in/josuedeveloper)"
     return text;
 }
   
