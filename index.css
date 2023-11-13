@@ -9,6 +9,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap'); /* font-family: 'Inter', sans-serif; */
 
 :root {
+    --orange: #ff7300;
     --white: #ffffff;
     --black: #000000;
 }
@@ -50,14 +51,14 @@ body {
     justify-content: center;
     background: linear-gradient(
         to bottom, 
-        rgba(29, 29, 29, .75),
-        rgba(0, 0, 0, .75),
-        rgba(0, 0, 0, .75),
-        rgba(0, 0, 0, .75),
-        rgba(0, 0, 0, .75)
+        rgba(29, 29, 29, .82),
+        rgba(0, 0, 0, .82),
+        rgba(0, 0, 0, .82),
+        rgba(0, 0, 0, .82),
+        rgba(0, 0, 0, .82)
       ), url('./assets/images/bg.jpg');
     background-size: cover;
-    background-position: center;
+    background-position: bottom;
 }
   
 
@@ -96,7 +97,7 @@ textarea {
     justify-content: center;
     padding: .5em 0;
     width: 100%;
-    border: .1em white solid;
+    border: .1em var(--orange) solid;
 }
 
 .time {
@@ -114,7 +115,7 @@ textarea {
     display: flex;
     flex-direction: column;
     align-items: center;
-    border: .1em white solid;
+    border: .1em var(--orange) solid;
     padding: 1em;
 }
 
@@ -190,7 +191,7 @@ textarea {
     font-family: 'Raleway', sans-serif;
     margin: .5em 0;
     padding: .5em 2em;
-    font-size: 1.5em;
+    font-size: 1.35em;
     background-color: #ee4646;
     border-radius: 2em;
     opacity: .8;
@@ -211,7 +212,7 @@ textarea {
     text-align: center;
     padding: 1em 3em;
     width: 100%;
-    border: 1px white solid;
+    border: .1em var(--orange) solid;
 }
 
 .item-container {
