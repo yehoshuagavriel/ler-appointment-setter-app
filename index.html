@@ -1,99 +1,143 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Appointment Setter / LER</title>
-  <link rel="stylesheet" href="index.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-</head>
-<body>
+  <head>
+    <title>Appointment Setters (L.E.R)</title>
+    <link rel="stylesheet" href="index.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+  </head>
+  <body>
     <div class="container">
-        <div class="time-container">
-            <span id="fechaActual" class="time"></span>
+      <div class="time-container">
+        <span id="fechaActual" class="time"></span>
+      </div>
+      <div class="counter-container">
+        <div class="counter">
+          <h2>Hubspot leads</h2>
+          <span id="clickupLeadsCount" class="number-counter">0</span>
+          <div>
+            <button
+              id="clickupLeadsDecreaseBtn"
+              class="fa fa-minus icon-btn minus-btn"
+            ></button>
+            <button
+              id="clickupLeadsBtn"
+              class="fa fa-plus icon-btn plus-btn"
+            ></button>
+          </div>
         </div>
-        <div class="counter-container">
-            <div class="counter">
-                <h2>Hubspot leads</h2>
-                <span id="clickupLeadsCount" class="number-counter">0</span>
-                <div>
-                    <button id="clickupLeadsDecreaseBtn" class="fa fa-minus icon-btn minus-btn"></button>
-                    <button id="clickupLeadsBtn" class="fa fa-plus icon-btn plus-btn"></button>
-                </div>
-            </div>
-            <div class="counter">
-                <h2>New Chats</h2>
-                <span id="openChatsCount" class="number-counter">0</span>
-                <div>
-                    <button id="openChatsDecreaseBtn" class="fa fa-minus icon-btn minus-btn"></button>
-                    <button id="openChatsBtn" class="fa fa-plus icon-btn plus-btn"></button>
-                </div>
-            </div>
-            <div class="counter">
-                <h2>Total Messages</h2>
-                <span id="totalChatsCount" class="number-counter">0</span>
-                <div>
-                    <button id="totalChatsDecreaseBtn" class="fa fa-minus icon-btn minus-btn"></button>
-                    <button id="totalChatsBtn" class="fa fa-plus icon-btn plus-btn"></button>
-                </div>
-            </div>
-            <div class="counter">
-                <h2>Follow ups</h2>
-                <span id="followUpsCount" class="number-counter">0</span>
-                <div>
-                    <button id="followUpsDecreaseBtn" class="fa fa-minus icon-btn minus-btn"></button>
-                    <button id="followUpsBtn" class="fa fa-plus icon-btn plus-btn"></button>
-                </div>
-            </div>
-            <div class="counter">
-                <h2>Inbound Leads</h2>
-                <span id="newChatInboundCount" class="number-counter">0</span>
-                <div>
-                    <button id="newChatInboundDecreaseBtn" class="fa fa-minus icon-btn minus-btn"></button>
-                    <button id="newChatInboundBtn" class="fa fa-plus icon-btn plus-btn"></button>
-                </div>
-            </div>
-            <div class="counter">
-                <h2>Outbound Leads</h2>
-                <span id="newChatOutboundCount" class="number-counter">0</span>
-                <div>
-                    <button id="newChatOutboundDecreaseBtn" class="fa fa-minus icon-btn minus-btn"></button>
-                    <button id="newChatOutboundBtn" class="fa fa-plus icon-btn plus-btn"></button>
-                </div>
-            </div>
+        <div class="counter">
+          <h2>New Chats</h2>
+          <span id="openChatsCount" class="number-counter">0</span>
+          <div>
+            <button
+              id="openChatsDecreaseBtn"
+              class="fa fa-minus icon-btn minus-btn"
+            ></button>
+            <button
+              id="openChatsBtn"
+              class="fa fa-plus icon-btn plus-btn"
+            ></button>
+          </div>
         </div>
-        <div class="input-container">
-            <div class="input-data">
-                <h2>Calls Proposed</h2>
-                <div class="item-container">
-                    <ol id="callsProposedList" class="input-item"></ol>
-                </div>
-                <input type="text" id="callsProposedInput">
-                <button id="callsProposedBtn" class="fa fa-plus add-btn"></button>
-            </div>
-            <div class="input-data">
-                <h2>New Booking</h2>
-                <div class="item-container">
-                    <ol id="newBookingList" class="input-item"></ol>
-                </div>
-                <input type="text" id="newBookingInput">
-                <button id="newBookingBtn" class="fa fa-plus add-btn"></button>
-            </div>
-            <div class="input-data">
-                <h2>Notes</h2>
-                <div class="item-container">
-                    <ol id="notesList" class="input-item"></ol>
-                </div>
-                <input type="text" id="notesInput">
-                <button id="notesBtn" class="fa fa-plus add-btn"></button>
-            </div>
-        </div> 
-        <div class="download-container">
-            <button id="descargarBtn">DOWNLOAD</button>
+        <div class="counter">
+          <h2>Total Messages</h2>
+          <span id="totalChatsCount" class="number-counter">0</span>
+          <div>
+            <button
+              id="totalChatsDecreaseBtn"
+              class="fa fa-minus icon-btn minus-btn"
+            ></button>
+            <button
+              id="totalChatsBtn"
+              class="fa fa-plus icon-btn plus-btn"
+            ></button>
+          </div>
         </div>
-        <div class="download-container">
-            <button id="resetBtn">RESET</button>
+        <div class="counter">
+          <h2>Follow ups</h2>
+          <span id="followUpsCount" class="number-counter">0</span>
+          <div>
+            <button
+              id="followUpsDecreaseBtn"
+              class="fa fa-minus icon-btn minus-btn"
+            ></button>
+            <button
+              id="followUpsBtn"
+              class="fa fa-plus icon-btn plus-btn"
+            ></button>
+          </div>
         </div>
-        <p class="footer">Hecho con <span class="heart">♥</span> por <a href="https://www.linkedin.com/in/josuehoenicka/" target="_blank">Josue Hoenicka</a></p>
+        <div class="counter">
+          <h2>Inbound Leads</h2>
+          <span id="newChatInboundCount" class="number-counter">0</span>
+          <div>
+            <button
+              id="newChatInboundDecreaseBtn"
+              class="fa fa-minus icon-btn minus-btn"
+            ></button>
+            <button
+              id="newChatInboundBtn"
+              class="fa fa-plus icon-btn plus-btn"
+            ></button>
+          </div>
+        </div>
+        <div class="counter">
+          <h2>Outbound Leads</h2>
+          <span id="newChatOutboundCount" class="number-counter">0</span>
+          <div>
+            <button
+              id="newChatOutboundDecreaseBtn"
+              class="fa fa-minus icon-btn minus-btn"
+            ></button>
+            <button
+              id="newChatOutboundBtn"
+              class="fa fa-plus icon-btn plus-btn"
+            ></button>
+          </div>
+        </div>
+      </div>
+      <div class="input-container">
+        <div class="input-data">
+          <h2>Calls Proposed</h2>
+          <div class="item-container">
+            <ol id="callsProposedList" class="input-item"></ol>
+          </div>
+          <input type="text" id="callsProposedInput" />
+          <button id="callsProposedBtn" class="fa fa-plus add-btn"></button>
+        </div>
+        <div class="input-data">
+          <h2>New Booking</h2>
+          <div class="item-container">
+            <ol id="newBookingList" class="input-item"></ol>
+          </div>
+          <input type="text" id="newBookingInput" />
+          <button id="newBookingBtn" class="fa fa-plus add-btn"></button>
+        </div>
+        <div class="input-data">
+          <h2>Notes</h2>
+          <div class="item-container">
+            <ol id="notesList" class="input-item"></ol>
+          </div>
+          <input type="text" id="notesInput" />
+          <button id="notesBtn" class="fa fa-plus add-btn"></button>
+        </div>
+      </div>
+      <div class="download-container">
+        <button id="descargarBtn">DESCARGAR</button>
+      </div>
+      <div class="download-container">
+        <button id="resetBtn">REINICIAR TODO</button>
+      </div>
+      <p class="footer">
+        Hecho con <span class="heart">♥</span> por
+        <a href="https://www.linkedin.com/in/yehoshuagavriel/" target="_blank"
+          >Josue Gabriel</a
+        >
+      </p>
     </div>
     <script src="index.js"></script>
-</body>
+  </body>
 </html>
